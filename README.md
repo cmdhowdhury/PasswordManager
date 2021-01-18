@@ -24,7 +24,7 @@ If this is your first time opening the program, the program will ask you to crea
 
 After you set up a profile, you have three options:
 ```
-add: will request a site, the username for that site and the password for that site and store that information in database.txt
+add: will request a site, the username for that site and the password for that site and store that information in database.txt[1]
 ```
 ```
 see: will output the username and password of a desired site, when asked for desired site, entry is white-space sensitive
@@ -41,6 +41,8 @@ edit: will allow you to edit the stored information, when prompted you can chang
   site: the website of the username and password
 ```
 If you open database.txt, you will only see the username and site in plaintext, the passwords will be encrypted through AES encryption.
+
+[1]When adding sites with multiple accounts add a number to each site name in order to faciliate finding their information.
 
 ### Credits/Citation
 1. [Information regarding working with files](https://www.w3schools.com/java/java_files.asp)
