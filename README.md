@@ -9,8 +9,27 @@ Through this lab, we take a look into the mechanism of password managers, compar
 3. Clone git repo
 
 ### Launch Instructions
-git clone https://github.com/cmdhowdhury/PasswordManager.git
+```
+$ git clone https://github.com/cmdhowdhury/PasswordManager.git
 
+$ make
+```
+
+### Functions
+Running the java program will create a txt file with the stored information under the name database.txt
+
+If this is your first time opening the program, the program will ask you to create a profile by setting a username and password. This information will allow you to access the rest of the program. 
+
+After you set up a profile, you have three options:
+```
+add : will request a site, the username for that site and the password for that site and store that information in database.txt
+```
+```
+see: will output the username and password of a desired site
+```
+```
+generate: will output a random password of desired length, includes numbers and letters, not symbols
+```
 ### Credits/Citation
 1. Information regarding working with files: 
 https://www.w3schools.com/java/java_files.asp
