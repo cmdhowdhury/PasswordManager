@@ -24,10 +24,10 @@ If this is your first time opening the program, the program will ask you to crea
 
 After you set up a profile, you have three options:
 ```
-add : will request a site, the username for that site and the password for that site and store that information in database.txt
+add: will request a site, the username for that site and the password for that site and store that information in database.txt
 ```
 ```
-see: will output the username and password of a desired site
+see: will output the username and password of a desired site, when asked for desired site, entry is white-space sensitive
 ```
 ```
 generate: will output a random password of desired length, includes numbers and letters, not symbols
