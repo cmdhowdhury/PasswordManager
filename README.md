@@ -12,6 +12,8 @@ Through this lab, we take a look into the mechanism of password managers, compar
 ```
 $ git clone https://github.com/cmdhowdhury/PasswordManager.git
 
+$ cd PasswordManager
+
 $ make
 ```
 
