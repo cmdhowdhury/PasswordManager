@@ -6,3 +6,6 @@ PasswordManager.class: PasswordManager.java
 
 clean:
 	rm *.class
+
+deep_clean:
+	rm *.class database.txt
