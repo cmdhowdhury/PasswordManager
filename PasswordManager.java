@@ -194,6 +194,7 @@ public class PasswordManager {
     private static void editInfo(String site) {
         String user = "user";
         String pass = "pass";
+        String site1 = "site1";
         String user1 = "user1";
         String pass1 = "pass1";
         final String secretKey = "PasswordManager";
@@ -234,6 +235,10 @@ public class PasswordManager {
                 System.out.println("What is your new password? ");
                 pass1 = System.console().readLine();
                 fileContents = fileContents.replace(pass, ("password: " + encrypt(pass1, secretKey)));
+            } else if (change.contains("site")) {
+                System.out.println("What is the new site? ");
+                site1 = System.console().readLine();
+                fileContents = fileContents.replace(site, (site1 + ":"));
             }
             FileWriter myWriter = new FileWriter("database.txt");
             myWriter.write(fileContents);
