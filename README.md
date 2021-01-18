@@ -34,11 +34,8 @@ generate: will output a random password of desired length, includes numbers and 
 ```
 If you open database.txt, you will only see the username and site in plaintext, the passwords will be encrypted through AES encryption.
 ### Credits/Citation
-1. Information regarding working with files: 
-https://www.w3schools.com/java/java_files.asp
+1. [Information regarding working with files](https://www.w3schools.com/java/java_files.asp)
 
-2. Code for generating a random password:
-https://www.techiedelight.com/generate-random-alphanumeric-password-java/
+2. [Code for generating a random password](https://www.techiedelight.com/generate-random-alphanumeric-password-java/)
 
-3. Encrypting and Decrypting code:
-https://howtodoinjava.com/java/java-security/java-aes-encryption-example/
+3. [Code for Encrypting and Decrypting passwords](https://howtodoinjava.com/java/java-security/java-aes-encryption-example/)
