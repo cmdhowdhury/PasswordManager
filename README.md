@@ -33,7 +33,7 @@ see: will output the username and password of a desired site, when asked for des
 generate: will output a random password of desired length, includes numbers and letters, not symbols
 ```
 ```
-edit: will allow you to edit the stored information, when prompted you change the following:
+edit: will allow you to edit the stored information, when prompted you can change the following:
 
   user: the username
   pass: the password
