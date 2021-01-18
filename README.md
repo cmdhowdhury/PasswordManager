@@ -6,9 +6,10 @@ Through this lab, we take a look into the mechanism of password managers, compar
 ### Prerequisites
 1. Terminal 
 2. Java installed
+3. Clone git repo
 
 ### Launch Instructions
-TBD
+git clone https://github.com/cmdhowdhury/PasswordManager.git
 
 ### Credits/Citation
 1. Information regarding working with files: 
