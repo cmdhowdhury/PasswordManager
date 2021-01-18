@@ -4,13 +4,13 @@ import java.io.IOException; //Import the IOException class to handle errors
 import java.io.FileNotFoundException; //Import this class to handle errors
 import java.util.Scanner; //Import Scanner class to read text files
 import java.security.SecureRandom; // Import SecureRandom to ensure cryptographically strong password
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.Base64;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
+import java.io.UnsupportedEncodingException; //Import class for non-supported charcater encoding
+import java.security.MessageDigest; //Import class to take in data and output fixed-length hash value
+import java.security.NoSuchAlgorithmException; //Import class for cryptographic algorithm equested but not available in the environment
+import java.util.Arrays; //Import class to manipulate arrays
+import java.util.Base64; //Import class for static methods for obtaining encoders and decoders for Base64 encoding scheme
+import javax.crypto.Cipher; //Import class to provide functionality of a cryptographic cipher for encyption and decryption
+import javax.crypto.spec.SecretKeySpec; //Import class to construct a SecretKey from byte array
 
 public class PasswordManager {
     // Create file to store usernames and passwords
@@ -123,7 +123,7 @@ public class PasswordManager {
             user_check = user_check.substring(user_check.lastIndexOf(" ") + 1);
             pass_check = decrypt(pass_check.substring(pass_check.lastIndexOf(" ") + 1), secretKey);
             // System.out.println(user_check);
-            System.out.println(pass_check);
+            // System.out.println(pass_check);
             System.out.println("Username: ");
             String user_inp = System.console().readLine();
             System.out.println("Password: ");
@@ -190,7 +190,64 @@ public class PasswordManager {
         }
     }
 
-    // 4. Generate random password
+    // 4. Edit stored username and password
+    private static void editInfo(String site) {
+        String user = "user";
+        String pass = "pass";
+        String user1 = "user1";
+        String pass1 = "pass1";
+        final String secretKey = "PasswordManager";
+        try {
+            File myObj = new File("database.txt");
+            Scanner myReader = new Scanner(myObj);
+            boolean found = false;
+            while (!found) {
+                if (myReader.nextLine().contains(site)) {
+                    user = myReader.nextLine();
+                    pass = myReader.nextLine();
+                    found = true;
+                }
+            }
+            myReader.close();
+            Scanner myReader2 = new Scanner(myObj);
+            StringBuffer buffer = new StringBuffer();
+            while (myReader2.hasNextLine()) {
+                buffer.append(myReader2.nextLine() + System.getProperty("line.separator"));
+            }
+            String fileContents = buffer.toString();
+            myReader2.close();
+            System.out.println("What would you like to change? ");
+            String change = System.console().readLine();
+            change = change.toLowerCase();
+            if (change.contains("user")) {
+                System.out.println("What is your new username? ");
+                user1 = System.console().readLine();
+                fileContents = fileContents.replace(user, ("username: " + user1));
+            } else if (change.contains("pass")) {
+                System.out.println("What is your new password? ");
+                pass1 = System.console().readLine();
+                fileContents = fileContents.replace(pass, ("password: " + encrypt(pass1, secretKey)));
+            } else if (change.contains("both")) {
+                System.out.println("What is your new username? ");
+                user1 = System.console().readLine();
+                fileContents = fileContents.replace(user, ("username: " + user1));
+                System.out.println("What is your new password? ");
+                pass1 = System.console().readLine();
+                fileContents = fileContents.replace(pass, ("password: " + encrypt(pass1, secretKey)));
+            }
+            FileWriter myWriter = new FileWriter("database.txt");
+            myWriter.write(fileContents);
+            myWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    // 5. Generate random password
     private static String randPassword(int len) {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -220,31 +277,41 @@ public class PasswordManager {
         while (access) {
             System.out.println("What would you like to do? ");
             String key = System.console().readLine();
-            if (key.contains("add")) {
+            if (key.equalsIgnoreCase("add")) {
                 storeInfo();
                 System.out.println("Are you done? ");
                 String done = System.console().readLine();
-                if (done.contains("no")) {
+                if (done.equalsIgnoreCase("no")) {
                 } else {
                     access = false;
                 }
-            } else if (key.contains("see")) {
+            } else if (key.equalsIgnoreCase("see")) {
                 System.out.println("Please enter the site for which you wish to check the username and password:");
                 String site = System.console().readLine();
                 outInfo(site);
                 System.out.println("Are you done? ");
                 String done = System.console().readLine();
-                if (done.contains("no")) {
+                if (done.equalsIgnoreCase("no")) {
                 } else {
                     access = false;
                 }
-            } else if (key.contains("generate")) {
+            } else if (key.equalsIgnoreCase("generate")) {
                 System.out.println("Please specify length of password: ");
                 int len = Integer.parseInt(System.console().readLine());
                 System.out.println(randPassword(len));
                 System.out.println("Are you done? ");
                 String done = System.console().readLine();
-                if (done.contains("no")) {
+                if (done.equalsIgnoreCase("no")) {
+                } else {
+                    access = false;
+                }
+            } else if (key.equalsIgnoreCase("edit")) {
+                System.out.println("Please enter the site for which you wish to change the username or password:");
+                String site = System.console().readLine();
+                editInfo(site);
+                System.out.println("Are you done? ");
+                String done = System.console().readLine();
+                if (done.equalsIgnoreCase("no")) {
                 } else {
                     access = false;
                 }
