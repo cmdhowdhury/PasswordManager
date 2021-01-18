@@ -220,31 +220,31 @@ public class PasswordManager {
         while (access) {
             System.out.println("What would you like to do? ");
             String key = System.console().readLine();
-            if (key.equalsIgnoreCase("add")) {
+            if (key.contains("add")) {
                 storeInfo();
                 System.out.println("Are you done? ");
                 String done = System.console().readLine();
-                if (done.equalsIgnoreCase("no")) {
+                if (done.contains("no")) {
                 } else {
                     access = false;
                 }
-            } else if (key.equalsIgnoreCase("see")) {
+            } else if (key.contains("see")) {
                 System.out.println("Please enter the site for which you wish to check the username and password:");
                 String site = System.console().readLine();
                 outInfo(site);
                 System.out.println("Are you done? ");
                 String done = System.console().readLine();
-                if (done.equalsIgnoreCase("no")) {
+                if (done.contains("no")) {
                 } else {
                     access = false;
                 }
-            } else if (key.equalsIgnoreCase("generate")) {
+            } else if (key.contains("generate")) {
                 System.out.println("Please specify length of password: ");
                 int len = Integer.parseInt(System.console().readLine());
                 System.out.println(randPassword(len));
                 System.out.println("Are you done? ");
                 String done = System.console().readLine();
-                if (done.equalsIgnoreCase("no")) {
+                if (done.contains("no")) {
                 } else {
                     access = false;
                 }
