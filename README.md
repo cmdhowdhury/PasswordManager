@@ -32,6 +32,14 @@ see: will output the username and password of a desired site, when asked for des
 ```
 generate: will output a random password of desired length, includes numbers and letters, not symbols
 ```
+```
+edit: will allow you to edit the stored information, when prompted you change the following:
+
+  user: the username
+  pass: the password
+  both: both the username and password
+  site: the website of the username and password
+```
 If you open database.txt, you will only see the username and site in plaintext, the passwords will be encrypted through AES encryption.
 
 ### Credits/Citation
